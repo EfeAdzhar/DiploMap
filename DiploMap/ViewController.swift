@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import MapboxMaps
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    internal var mapView: MapView!
+     
+    override public func viewDidLoad() {
+    super.viewDidLoad()
+     
+    let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiZWZlYWR6aGFyIiwiYSI6ImNsMWk0aHhnOTFpeWgzY2xuYjl5a2tlbnQifQ.4LCZvBnKWI8QTknLYe2SdA")
+    let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
+    mapView = MapView(frame: view.bounds, mapInitOptions: myMapInitOptions)
+    mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+     
+    self.view.addSubview(mapView)
     }
-
-
-}
-
+    }
